@@ -2,9 +2,10 @@
   "name": "instaclone",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec babel-node server",
+    "migrate": "npx prisma migrate dev",
+    "studio" : "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,15 @@
     "url": "https://github.com/GwiHwan-Go/isntaclone_Backend/issues"
   },
   "homepage": "https://github.com/GwiHwan-Go/isntaclone_Backend#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "nodemon": "^2.0.7",
+    "prisma": "^2.25.0"
+  },
   "dependencies": {
-    "touch": "^3.1.0"
+    "@prisma/client": "^2.25.0",
+    "apollo-server": "^2.25.2",
+    "graphql": "^15.5.1"
   }
 }
