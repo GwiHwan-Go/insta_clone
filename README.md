@@ -18,4 +18,6 @@ npm i @babel/node --save-dev
 stack_builder => install postgres, pgadmin4, username should be same with .env, mydb should be changed
 after open the pgadmin4, npx prisma migrate dev 
 
+npx prisma studio
+
 Instaclone Backend

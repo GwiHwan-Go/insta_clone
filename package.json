@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node server",
     "migrate": "npx prisma migrate dev",
-    "studio" : "npx prisma studio"
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/GwiHwan-Go/isntaclone_Backend#readme",
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
     "@babel/preset-env": "^7.14.7",
     "nodemon": "^2.0.7",
     "prisma": "^2.25.0"
@@ -27,6 +28,8 @@
   "dependencies": {
     "@prisma/client": "^2.25.0",
     "apollo-server": "^2.25.2",
-    "graphql": "^15.5.1"
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5"
   }
 }
