@@ -21,9 +21,17 @@ after open the pgadmin4, npx prisma migrate dev
 npm i graphql-tools
 npm i dotenv
 
+npm i bcrypt
 npx prisma studio
 
 ---> simulation ended
 
 
 Instaclone Backend
+
+##User: prisma init -> make model on prisma schema and migrate -> make queries and mutations and it should be matched with schema.prisma
+
+- Create Account
+- See profile
+- Login - npm install jsonwebtoken
+- File upload - altair graph ql
