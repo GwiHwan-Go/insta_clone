@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/GwiHwan-Go/isntaclone_Backend/issues"
   },
-  "homepage": "https://github.com/GwiHwan-Go/isntaclone_Backend#readme",
+  "homepage": "https://github.com/GwiHwan-Go/instagram_clone/tree/master",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/node": "^7.14.7",
