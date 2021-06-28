@@ -15,7 +15,14 @@ export default{
                     }
                 }
             }
-        }) 
+        }),
+        likesNumber : ({id}) => client.like.count({
+            where : {photoId : id}
+        }),
+        comments : ({id}) => client.comment.count({
+            where : {photoId: id}
+        }),
+        isMine : ({userId},_,{loggedInUser}) => (loggedInUser? userId === loggedInUser.id : false)
     },
     Hashtag: {
         photos: ({id}, {page}) => {
