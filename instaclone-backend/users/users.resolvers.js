@@ -38,6 +38,13 @@ export default {
           });
           return exists.length !==0;
       },
+      photos: ({id}, {cursor})=> {
+        return client.user.findUnique({
+        where: { id }}).photos({
+            take: 5,
+            skip: cursor ? 1 : 0,
+            ...(cursor && {cursor: {id : cursor}}),
+        })}
 
 
 }
