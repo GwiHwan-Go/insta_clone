@@ -3,6 +3,7 @@ import client from "../../client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { protectedResolver } from "../users.utils";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 const PORT = process.env.PORT;
 
@@ -20,12 +21,15 @@ export default {
         }, {loggedInUser}) => {
             let avatarUrl = null;
             if(avatar){
-                const {filename, createReadStream} = await avatar;
-                const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
-                const readStream = createReadStream();
-                const writeStream = createWriteStream(process.cwd()+"/uploads/"+newFilename);
-                readStream.pipe(writeStream);
-                avatarUrl = `http://localhost:${PORT}/static/${newFilename}`;
+                avatarUrl = await uploadToS3(avatar, loggedInUser.id, `${loggedInUser.username}'s avatars`);
+                
+            // *To upload file to server*
+            //     const {filename, createReadStream} = await avatar;
+            //     const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+            //     const readStream = createReadStream();
+            //     const writeStream = createWriteStream(process.cwd()+"/uploads/"+newFilename);
+            //     readStream.pipe(writeStream);
+            //     avatarUrl = `http://localhost:${PORT}/static/${newFilename}`;
             }
             let uglyPassword = null;
             if(newPassword){

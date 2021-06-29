@@ -38,6 +38,8 @@ Instaclone Backend
 - Change Avatar - altair graph ql, npm i express apollo-server-express,
 npm i morgan
 
+-upload photo - npm i aws-sdk
+
 
 ####instaclone FrontEnd
 
