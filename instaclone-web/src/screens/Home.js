@@ -1,32 +1,47 @@
 import { gql, useQuery } from "@apollo/client";
-import { useHistory } from "react-router-dom";
 import {logUserOut } from "../apollo";
+import Photo from "../components/feed/Photo";
+import PageTitle from "../components/PageTitle";
+import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from "../fragments";
 
 const FEED_QUERY = gql`
     query seeFeed {
         seeFeed {
-            id
             user {
                 username
                 avatar
             }
-            file
-            caption
-            likesNumber
-            comments
+            ...PhotoFragment
+            comments {
+                ...CommentFragment  
+            }
             createdAt
-            isMine
         }
     }
+    ${PHOTO_FRAGMENT}
+    ${COMMENT_FRAGMENT}
 `;
+
 function Home(){
     const {data} = useQuery(FEED_QUERY);
-    // console.log(data);
-    const history = useHistory();
     return (
     <div>
+        <PageTitle titleName="Feed"/>
+        {data?.seeFeed?.map(photo =>
+            <Photo 
+                key={photo.id}
+                id={photo.id} 
+                user={photo.user} 
+                file={photo.file} 
+                isLiked={photo.isLiked} 
+                likesNumber={photo.likesNumber}
+                caption={photo.caption}
+                commentNumber={photo.commentNumber}
+                comments={photo.comments}
+            />
+            )}
         <h1>Welcome we did it!</h1>
-        <button onClick={()=>logUserOut(history)}>Log out now!</button>
+        <button onClick={()=>logUserOut()}>Log out now!</button>
     </div>
     )
 }

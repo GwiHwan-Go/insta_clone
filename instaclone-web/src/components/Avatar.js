@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 const SAvatar = styled.div`
-    width:18px;
-    height:18px;
+    width:${props=>props.lg? "30px" : "25px"};
+    height:${props=>props.lg? "30px" : "25px"};
     border-radius: 50%;
     background-color: black;
     overflow: hidden;
@@ -10,11 +10,12 @@ const SAvatar = styled.div`
 
 const Img = styled.img`
     max-width: 100%;
+    align-items: center;
 `;
 
-function Avatar({url = ""}){
+function Avatar({url = "", lg = false}){
     return (
-    <SAvatar>
+    <SAvatar lg={lg}>
         {url !==""? <Img src={url}/> : null}
     </SAvatar>
     );
