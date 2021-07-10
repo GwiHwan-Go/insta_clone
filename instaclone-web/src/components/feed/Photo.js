@@ -84,8 +84,6 @@ function Photo({id, user, file, isLiked, likesNumber, caption, commentNumber, co
                     }
                 }
             })
-
-        
       }
     };
     const [toggleLikeMutation]=useMutation(TOGGLE_LIKE_MUTATION, {
